@@ -1,0 +1,9 @@
+crewai
+crewai-tools
+langchain-openai
+openai
+python-dotenv
+pydantic
+chromadb
+langfuse
+requests

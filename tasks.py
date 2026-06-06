@@ -1,5 +1,6 @@
 from crewai import Task
 
+
 def create_tasks(
     research_agent,
     analysis_agent,
@@ -10,17 +11,20 @@ def create_tasks(
 
     research_task = Task(
         description=f"""
-        Research the following topic:
+        Research the topic:
 
         {topic}
 
-        Gather:
+        Use the Search Tool to gather:
+
         - Current trends
-        - Opportunities
+        - Industry developments
+        - Market opportunities
         - Risks
-        - Market observations
+
+        Produce a detailed research report.
         """,
-        expected_output="Research report",
+        expected_output="Detailed research report",
         agent=research_agent
     )
 
@@ -29,19 +33,24 @@ def create_tasks(
         Analyze the research findings.
 
         Identify:
+
         - Key trends
         - Business opportunities
         - Risks
         - Competitive considerations
         """,
-        expected_output="Business analysis",
+        expected_output="Business analysis report",
         agent=analysis_agent
     )
 
     strategy_task = Task(
         description="""
-        Generate executive recommendations
-        based on the analysis.
+        Generate executive recommendations.
+
+        Use the Trend Score Tool to evaluate
+        the business relevance of the topic.
+
+        Produce strategic recommendations.
         """,
         expected_output="Strategic recommendations",
         agent=strategy_agent
@@ -49,12 +58,14 @@ def create_tasks(
 
     review_task = Task(
         description="""
-        Review the complete report.
+        Review the entire report.
 
         Improve:
+
         - Clarity
         - Accuracy
         - Structure
+        - Executive readability
         """,
         expected_output="Final reviewed report",
         agent=reviewer_agent

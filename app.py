@@ -14,7 +14,7 @@ from agents import (
 from tasks import create_tasks
 from crew import create_crew
 
-load_dotenv()
+load_dotenv(override=True)
 
 def main():
 
